@@ -793,7 +793,18 @@ h1,h2,h3{font-family:Georgia,"Times New Roman",serif!important;letter-spacing:.0
 </footer>
 <div class="modal" id="privacyModal">
 <div class="modal-content">
-<span class="modal-close" onclick="closePrivacyModal()">×</span>
+<div aria-label="Сведения об операторе персональных данных" class="policy-legal-details">
+<h2>Сведения об операторе и контакты</h2>
+<p><strong>Сайт:</strong> https://gadaniepotok.ru</p>
+<p><strong>Ответственное лицо:</strong> <span data-policy-owner="">назначается настройками сайта</span></p>
+<p><strong>Статус:</strong> частный консультант; тестовая редакция сайта.</p>
+<p><strong>Тестовый ИНН:</strong> 770412345678 <small>(не государственный реквизит)</small></p>
+<p><strong>Тестовый ОГРНИП:</strong> 326770000123456 <small>(не государственный реквизит)</small></p>
+<p><strong>Email по вопросам персональных данных:</strong> <a href="mailto:privacy@gadaniepotok.ru">privacy@gadaniepotok.ru</a></p>
+<p><strong>Телефон:</strong> <a data-policy-phone="" href="">назначается при подключении сайта</a></p>
+<p><strong>Формат работы:</strong> дистанционный.</p>
+<p><strong>Редакция политики:</strong> GP-2026-09-04 от 4 сентября 2026 года.</p>
+</div><span class="modal-close" onclick="closePrivacyModal()">×</span>
 <h1>🛡 Политика обработки персональных данных</h1>
 <div class="company-info">
 <p>Частный консультант</p>
@@ -1449,5 +1460,14 @@ ym(SITE_SETTINGS.yandexMetrikaId,"init",{clickmap:true,trackLinks:true,accurateT
   else run();
 })();
 </script>
-</body>
+<script id="policy-runtime-fields">
+(function(){
+  const cfg=(typeof SITE_SETTINGS!=='undefined'?SITE_SETTINGS:(typeof SETTINGS!=='undefined'?SETTINGS:{}));
+  const raw=String(cfg.phoneNumber||'').replace(/\D/g,'');
+  const digits=(raw.length===11&&raw[0]==='8'?'7'+raw.slice(1):raw);
+  const formatted=digits.length===11?`+${digits[0]} (${digits.slice(1,4)}) ${digits.slice(4,7)}-${digits.slice(7,9)}-${digits.slice(9,11)}`:'';
+  document.querySelectorAll('[data-policy-phone]').forEach(el=>{el.textContent=formatted||'назначается при подключении сайта';el.href=formatted?'tel:+'+digits:'';});
+  document.querySelectorAll('[data-policy-owner]').forEach(el=>{el.textContent=cfg.psychicName||'ответственное лицо сайта';});
+})();
+</script></body>
 </html>
