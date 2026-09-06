@@ -1064,7 +1064,7 @@ function initGateway(){
     }
     if (ageConfirmBtn) { ageConfirmBtn.addEventListener('click', confirmAgeAccess); }
     document.addEventListener('keydown', evt => {
-        if (evt.key === 'Escape') { closeAgeModal(); closeUnlockModal(); closeContactIntentModal(); }
+        if (evt.key === 'Escape') { closeAgeModal(); closeUnlockModal(); }
     });
 }
 
@@ -1410,7 +1410,7 @@ window.closeAgeModal = closeAgeModal;
 window.confirmAgeAccess = confirmAgeAccess;
 window.openUnlockModal = openUnlockModal;
 window.closeUnlockModal = closeUnlockModal;
-window.closeContactIntentModal = closeContactIntentModal;
+
 
 })();
 </script>
